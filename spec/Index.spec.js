@@ -9,8 +9,15 @@ describe('Contacts', function() {
 
 		var contactList = element.all(by.repeater('contact in vm.contacts'));
 		expect(contactList.count()).toEqual(4);
-		expect(contactList.get(3).element(by.css('h4')).getText()).toEqual('Name: Gary');
-		expect(contactList.get(3).element(by.css('h6')).getText()).toEqual('Phone: 0782837819');
+
+		//expect(contactList.get(2).element(by.css('h4')).getText()).toEqual('Name: Gary');
+		//expect(contactList.get(2).element(by.css('h6')).getText()).toEqual('Phone: 0782837819');
+
+		expect(contactList.get(3).element(by.model('contact.name')).getAttribute('value')).toEqual('Gary');
+
+		expect(contactList.get(3).element(by.model('contact.phone')).getAttribute('value')).toEqual('0782837819');
+
+
 	});
 
 	it('should delete a contact', function() {
